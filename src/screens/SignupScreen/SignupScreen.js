@@ -6,20 +6,29 @@ import styled from 'styled-components'
 export default class SignupScreen extends Component {
     render() {
         return (
-            <SignUpContainer>
-                <SignupText>Signup</SignupText>
-                <SignupInput type="text" placeholder="First Name"/>
-                <SignupInput type="text" placeholder="Last Name"/>
-                <SignupInput type="text" placeholder="Username"/>
-                <SignupInput type="password" placeholder="Password" />
-                <SignupInput type="password" placeholder="Confirm Password" />
-                <SignupButton >Submit</SignupButton>
-            </SignUpContainer>
+            <Container>
+                <SignUpContainer>
+                    <SignupText>Signup</SignupText>
+                    <SignupInput type="text" placeholder="First Name"/>
+                    <SignupInput type="text" placeholder="Last Name"/>
+                    <SignupInput type="text" placeholder="Username"/>
+                    <SignupInput type="password" placeholder="Password" />
+                    <SignupInput type="password" placeholder="Confirm Password" />
+                    <SignupButton >Submit</SignupButton>
+                </SignUpContainer>
+            </Container>
         )
     }
 }
 
-const SignUpContainer = styled.div `{
+const Container = styled.div `
+    display: flex;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+`
+
+const SignUpContainer = styled.div `
     background: gray;
     border-radius: 20px;
     width: 30%;
@@ -57,6 +66,9 @@ const SignupButton = styled.button`
     }
 `
 
-const SignupText = styled.text`
+const SignupText = styled.h1`
     color: white;
+    font-size: 40px;
+    margin: 30px;
+    font-weight: bold;
 `
