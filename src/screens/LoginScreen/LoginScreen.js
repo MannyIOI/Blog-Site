@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import { withRouter } from "react-router-dom";
 
 import './index.module.css'
 
-export default class LoginScreen extends Component {
+class LoginScreen extends Component {
+    onLogin = () => {
+        this.props.history.push({pathname: "/home"})
+    }
+
     render() {
         return (
             <Container>
@@ -11,7 +16,7 @@ export default class LoginScreen extends Component {
                     <LoginText>Login</LoginText>
                     <LoginInput type="text" placeholder="Username"/>
                     <LoginInput type="password" placeholder="Password"/>
-                    <LoginButton>Submit</LoginButton>
+                    <LoginButton onClick={this.onLogin}>Submit</LoginButton>
                 </LoginFormContainer>
             </Container>
         )
@@ -67,4 +72,10 @@ const LoginButton = styled.button`
 const LoginText = styled.p`
     color: white;
     align-self: center;
+    font-size: 40px;
+    margin: 30px;
+    font-weight: bold;
 `
+
+
+export default withRouter(LoginScreen);

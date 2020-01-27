@@ -5,8 +5,9 @@ export default class Blog extends Component {
     render() {
         return (
             <BlogContainer>
+
                 <TitleContainer>
-                    <h3>Blog Title</h3>
+                    <Title>Blog Title</Title>
                 </TitleContainer>
                 <SnippetContainer>
                     <SnippetText>Still Could death since do we hoped is in. Exquisite no my attention extensive. 
@@ -31,29 +32,47 @@ const ReadMoreLink = styled.a`
     }
 `
 
+const Title = styled.h3`
+    color: rgb(46, 48, 194);
+`
+
+const SnippetText = styled.p`
+    color: white;
+    margin: 0px;
+    font-size: 14px;
+    align-self: flex-start;
+`
+
 const BlogContainer = styled.div`
-    background: red;
-    width: 15%;
+    background: rgba(107, 202, 111, 0.685);
+    width: 14%;
     display: flex;
     flex-direction: column;
     cursor: pointer;
     transition: 0.2s;
     border-radius: 5px;
+    margin: 27px;
 
     &:hover{
         background: white;
-        border: 1px solid red;
         border-radius: 16px;
         color: red;
     }
     &:hover ${ReadMoreLink}{
         color: red;
     }
+    &:hover ${Title}{
+        color: red;
+    }
+    &:hover ${SnippetText}{
+        color: rgb(80, 80, 100);
+    }
 `
 
 const TitleContainer = styled.div`
-    
+   
 `
+
 
 const SnippetContainer = styled.div`
     alignSelf: flex-start;
@@ -61,9 +80,4 @@ const SnippetContainer = styled.div`
     margin: 8px;
 `
 
-const SnippetText = styled.p`
-    margin: 0px;
-    font-size: 14px;
-    align-self: flex-start;
-`
 

@@ -1,7 +1,7 @@
 p {
-    color: rgb(75, 76, 95);
+    color: rgb(44, 44, 61);
     align-self: flex-start;
-    
+    flex-wrap: wrap;
 }
 
 /*  */
