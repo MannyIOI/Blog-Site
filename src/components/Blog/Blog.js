@@ -5,6 +5,7 @@ export default class Blog extends Component {
     render() {
         return (
             <BlogContainer>
+
                 <TitleContainer>
                     <Title>Blog Title</Title>
                 </TitleContainer>
