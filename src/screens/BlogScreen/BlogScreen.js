@@ -42,21 +42,17 @@ export default class BlogScreen extends Component {
             //     </BlogContainer>
             // </Container>
             <div>
-                <Navbar style={{"margin":"30px"}}>
-                    <Navbar.Brand style={{"color":"white","fontSize":"30px"}}>Blog Site</Navbar.Brand>
-                    <Navbar.Toggle/>
-                    <Navbar.Collapse className="justify-content-end">
-                        <Navbar.Text>
-                            <ButtonToolbar>
-                                <Button variant="primary" style={{"fontSize":"15px" }} onClick={this.onSignoutClicked}>Signout</Button>
-                            </ButtonToolbar>
-                        </Navbar.Text>
-                    </Navbar.Collapse>
-                </Navbar>
-                <div style={{"margin":"0px","width":"100%"}}>
+                <BlogHeader/>
+                {/* <Button variant="primary" style={{"fontSize":"15px" }} onClick={this.onSignoutClicked}>Signout</Button> */}
+                <div style={{"margin":"30px 0px","width":"100%"}}>
                     <Row>
                         <Col style = {{"width": "1250px"}}>
-                            <Image src={pic} roundedCircle style={{"width":"200px"}}/>
+                            <Row className="justify-content-center">
+                                <Image src={pic} roundedCircle style={{"width":"200px"}}/>
+                            </Row>
+                            <Row className="justify-content-center">
+                                <h4>Name of the Blogger</h4>
+                            </Row>
                         </Col>
                         <Col xs={6} style = {{"width": "3000px"}}>
                             <Row className="justify-content-end">
@@ -88,6 +84,11 @@ export default class BlogScreen extends Component {
 const Containerr = styled.div`
     display: flex;
     flex-direction: column;
+`
+
+const BlogHeader = styled.div`
+    background: blue;
+    height: 150px;
 `
 
 const BlogContainer = styled.div`
