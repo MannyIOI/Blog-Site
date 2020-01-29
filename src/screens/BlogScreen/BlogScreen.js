@@ -11,17 +11,27 @@ export default class BlogScreen extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            blog: {}
+            blog: {},
+            blogId: this.props.match.params.blogID,
         }
+        const { blogID } = 
         this.getBlog()
     }
 
     getBlog = async() =>{
         const { blogID } = this.props.match.params
+        this.setState({blogId: blogID})
         const res = await getBlogAPI(blogID)
         this.setState({blog: res})
     }
+
+    onEditClicked = () => {
+        this.props.history.push({pathname: "/edit/"+this.state.blogId})
+    }
     
+    onSignoutClicked = () => {
+        this.props.history.push({pathname: "/login/"})
+    }
     
     render() {
         return (
@@ -38,7 +48,7 @@ export default class BlogScreen extends Component {
                     <Navbar.Collapse className="justify-content-end">
                         <Navbar.Text>
                             <ButtonToolbar>
-                                <Button variant="primary" style={{"fontSize":"15px" }}>Signout</Button>
+                                <Button variant="primary" style={{"fontSize":"15px" }} onClick={this.onSignoutClicked}>Signout</Button>
                             </ButtonToolbar>
                         </Navbar.Text>
                     </Navbar.Collapse>
@@ -51,7 +61,7 @@ export default class BlogScreen extends Component {
                         <Col xs={6} style = {{"width": "3000px"}}>
                             <Row className="justify-content-end">
                                 <ButtonToolbar>
-                                    <Button variant="outline-warning" onClick={this.onEdit}>Edit</Button>
+                                    <Button variant="outline-warning" onClick={this.onEditClicked}>Edit</Button>
                                 </ButtonToolbar>
                             </Row>
                             <Row>

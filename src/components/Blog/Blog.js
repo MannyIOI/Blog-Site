@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 export default class Blog extends Component {
+
     render() {
         return (
-            <BlogContainer>
+            <BlogContainer onClick={() => console.log(this.props.history.push({pathname: "/blog/"+this.props.item.ID}))}>
 
                 <TitleContainer>
                     <Title>{this.props.item.BlogTitle}</Title>
@@ -39,16 +40,17 @@ const SnippetText = styled.p`
     font-size: 14px;
     align-self: flex-start;
 `
-
+// background: rgba(107, 202, 111, 0.685);
 const BlogContainer = styled.div`
-    background: rgba(107, 202, 111, 0.685);
-    width: 14%;
+    background: silver;
+    width: 20%;
     display: flex;
     flex-direction: column;
     cursor: pointer;
     transition: 0.2s;
     border-radius: 5px;
     margin: 27px;
+    height: 350px;
 
     &:hover{
         background: white;

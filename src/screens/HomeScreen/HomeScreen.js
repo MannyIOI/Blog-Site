@@ -8,7 +8,7 @@ export default class HomeScreen extends Component {
     constructor(props){
         super(props)
         this.state = {
-            blogs: [],
+            blogs: [{BlogTitle: "Title", BlogContent: "Content", ID: 1},{},{},{},{},{},{}],
             blogsIsLoading: false,
             createBlogLoading: false,
             blogTitle: ""
@@ -36,23 +36,67 @@ export default class HomeScreen extends Component {
     }
 
     onBlogClicked = (id) => {
-        
+        this.props.history.push({pathname: "/blog/"+this.props.item.ID})
     }
 
     render() {
         // const array = [{}, {}, {}]
         return (
-            <div>
-                <p>Home Screen</p>
-                <NewBlogInput value={this.state.value} onChange={this.handleChange} />
-                <CreateBlogButton onClick={this.createBlog}>Create</CreateBlogButton>
-                <HomeContainer>
-                    {this.state.blogs.map((item, key) =>  <Blog key={item.ID} item={item}/> )}
-                </HomeContainer>
-            </div>
+            <Container>
+                <HomeHeader/>
+                {/* <Categro> */}
+                <HomeBodyContainer>
+                    <CategoryContainer>
+                        <CategoryButton>category</CategoryButton>
+                        <CategoryButton>category</CategoryButton>
+                    </CategoryContainer>
+                    <BlogListContainer>
+                        <p>Home Screen</p>
+                        <NewBlogInput value={this.state.value} onChange={this.handleChange} />
+                        <CreateBlogButton onClick={this.createBlog}>Create</CreateBlogButton>
+                        <HomeContainer>
+                            {this.state.blogs.map((item, key) =>  <Blog key={item.ID} item={item} history = {this.props.history}/> )}
+                        </HomeContainer>
+                    </BlogListContainer>
+                </HomeBodyContainer>
+            </Container>
         )
     }
 }
+
+const Container = styled.div`
+
+`
+const HomeBodyContainer = styled.div`
+    display: flex;
+`
+
+const BlogListContainer =styled.div`
+    width: 85%;
+`
+
+const CategoryContainer = styled.div`
+    display: flex;
+    width: 15%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+`
+
+const CategoryButton = styled.button`
+    font-size: 20px;
+    height: 60px;
+    width: 60%;
+    color: white;
+    background: grey;
+    border-radius: 100px;
+    border: 0px;
+    margin: 10px;
+    &:hover {
+        background: white;
+        color: rgb(71, 79, 179);
+    }
+`
 
 const CreateBlogButton = styled.button`
     background: rgb(71, 79, 179);
@@ -70,6 +114,11 @@ const CreateBlogButton = styled.button`
         background: white;
         color: rgb(71, 79, 179);
     }
+`
+
+const HomeHeader = styled.div`
+    background: blue;
+    height: 150px;
 `
 
 const HomeContainer = styled.div`
