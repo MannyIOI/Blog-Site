@@ -2,28 +2,66 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { withRouter } from "react-router-dom";
 
+import { Card, Form, Button, Row, Col} from "react-bootstrap"
 import './index.module.css'
 
 class LoginScreen extends Component {
     onLogin = () => {
         this.props.history.push({pathname: "/home"})
     }
+    toSignup = () => {
+        this.props.history.push({pathname: "/signup"})
+    }
 
     render() {
         return (
-            <Container>
-                <LoginFormContainer>
-                    <LoginText>Login</LoginText>
-                    <LoginInput type="text" placeholder="Username"/>
-                    <LoginInput type="password" placeholder="Password"/>
-                    <LoginButton onClick={this.onLogin}>Submit</LoginButton>
-                </LoginFormContainer>
-            </Container>
+            // <Container>
+            //     <LoginFormContainer>
+            //         <LoginText>Login</LoginText>
+            //         <LoginInput type="text" placeholder="Username"/>
+            //         <LoginInput type="password" placeholder="Password"/>
+            //         <LoginButton onClick={this.onLogin}>Submit</LoginButton>
+            //     </LoginFormContainer>
+            // </Container>
+            <div style={{"display":"flex","alignItems": "center","minHeight":"100%","minHeight":"100vh","Width":"100%","justifyContent": "center"}}>
+            
+                <Row  style={{"backgroundColor":"grey", "height":"500px"}}>
+                    <Col sm={4} style={{padding: "0px"}}>
+                    {/* style={{ width: '18rem' }} */}
+                        <Card style={{"backgroundColor":"black", "height":"500px"}}>
+        
+                            <Card.Body style={{display: "flex", flexDirection: "column", justifyContent: "center"}}>
+                                <Card.Title>Hello friend!</Card.Title>
+                                <Card.Text style={{color: "white"}}>
+                                Enter your personal details and start your journy with us today.
+                                </Card.Text>
+                                <Button variant="primary" onClick={this.toSignup}>To Signup</Button>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                    <Col sm={8} style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
+                        <Form>
+                            <Form.Group controlId="formBasicEmail">
+                                <Form.Control type="email" placeholder="Enter email" style={{width: "100%", fontSize: "14px", padding: "20px"}} />
+                            </Form.Group>
+
+                            <Form.Group controlId="formBasicPassword">
+                                <Form.Control type="password" placeholder="Password" style={{width: "100%", fontSize: "14px", padding: "20px"}}/>
+                            </Form.Group>
+                            
+                            <Button variant="primary" type="submit" style={{width: "120px", fontSize: "17px"}} onClick={this.onLogin}>
+                                Login
+                            </Button>
+                        </Form>
+                    </Col>
+                </Row>
+            
+            </div>
         )
     }
 }
 
-const Container = styled.div`
+const Containerr = styled.div`
     width: 100%;
     display: flex;
     flex: 1;

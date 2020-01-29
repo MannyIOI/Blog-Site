@@ -1,54 +1,65 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import ReactMDE from "react-mde";
 import "react-mde/lib/styles/css/react-mde-all.css";
 import './index.css'
-import * as Showdown from "showdown";
+
+import { getBlogAPI, updateBlogAPI } from "../../api/api"
 
 export default class EditScreen extends Component {
     constructor(props){
         super(props)
         this.state = {
-            value: '**Hello World**',
-            selectedTab: 'write' | 'preview'
+            blog: {},
+            blog_ID: parseInt(this.props.match.params.blogID)
         }
-
         
+        this.getBlog()
+        this.listen()
     }
 
-    setValue = (val) => {
-        this.setState({value: val})
-    }
-    setSelectedTab = () => {
-        this.setState({selectedTab: this.state.selectedTab === 'write'? 'preview' : 'write'})
-    }
-    
-    onCreate = () => {
-        this.props.history.push({pathname: "/home"})
+    getBlog = async() => {
+        const res = await getBlogAPI(this.state.blog_ID)
+        this.setState({blog: res})
     }
 
-    render() {
-        const converter = new Showdown.Converter({
-            tables: true,
-            simplifiedAutoLink: true,
-            strikethrough: true,
-            tasklists: true
-          });
-        
+    listen = async() => {
+        while (true) {
+            await this.getBlog()
+            setTimeout(function(){}, 10)
+        }
+    }
+
+    updateBlogContent = async(event) => {
+        const data = {
+            ID: this.state.blog_ID,
+        	BlogTitle : this.state.blog.BlogTitle,
+        	BlogContent: event.target.value
+        }
+        await updateBlogAPI(data)
+    }
+
+    updateBlogTitle = async(event) => {
+        const data = {
+            ID: this.state.blog_ID,
+        	BlogTitle : event.target.value,
+        	BlogContent: this.state.blog.BlogContent
+        }
+        await updateBlogAPI(data)
+        // this.setState()
+    }
+
+
+    render() {        
         return (
             <Container>
                 <CreateBlogTitle>Create Blog Screen</CreateBlogTitle>
                 <CreateBlogContainer>
-                    <BlogTitleInput placeholder="Write your Blog title here (let's try to make it a catchy one shall we;) )"/>
-                    <ReactMDE 
-                        value={this.state.value}
-                        onChange={this.setValue}
-                        selectedTab={this.state.selectedTab}
-                        onTabChange={this.setSelectedTab}
-                        generateMarkdownPreview={markdown =>
-                            Promise.resolve(converter.makeHtml(markdown))}
-                        className="mark-down-editor container" style={{width:'10px'}} minEditorHeight={500} maxEditorHeight={1500} />
-                        <CreateButton onClick={this.onCreate}>Done</CreateButton>
+                    <BlogTitleInput placeholder="Write your Blog title here (let's try to make it a catchy one shall we;) )" 
+                        value = {this.state.blog.BlogTitle} onChange={this.updateBlogTitle}/>
+
+                    <EditBlogContent rows = {30} value={this.state.blog.BlogContent} onChange={this.updateBlogContent}/>
+
+                    <CreateButton onClick={this.onCreate}>Done</CreateButton>
                 </CreateBlogContainer>
                 
 
@@ -80,6 +91,14 @@ const BlogTitleInput = styled.input`
 
 const CreateBlogTitle = styled.p`
     align-self: center;
+`
+
+const EditBlogContent = styled.textarea`
+    margin: 50px;
+    border-radius: 10px;
+    height: 30%;
+    padding: 40px;
+    font-size: 17px;
 `
 
 const CreateButton = styled.button`
