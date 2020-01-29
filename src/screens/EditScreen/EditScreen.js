@@ -5,7 +5,7 @@ import "react-mde/lib/styles/css/react-mde-all.css";
 import './index.css'
 import * as Showdown from "showdown";
 
-export default class CreateScreen extends Component {
+export default class EditScreen extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -21,6 +21,10 @@ export default class CreateScreen extends Component {
     }
     setSelectedTab = () => {
         this.setState({selectedTab: this.state.selectedTab === 'write'? 'preview' : 'write'})
+    }
+    
+    onCreate = () => {
+        this.props.history.push({pathname: "/home"})
     }
 
     render() {
@@ -44,7 +48,10 @@ export default class CreateScreen extends Component {
                         generateMarkdownPreview={markdown =>
                             Promise.resolve(converter.makeHtml(markdown))}
                         className="mark-down-editor container" style={{width:'10px'}} minEditorHeight={500} maxEditorHeight={1500} />
+                        <CreateButton onClick={this.onCreate}>Done</CreateButton>
                 </CreateBlogContainer>
+                
+
             </Container>
         )
     }
@@ -73,4 +80,22 @@ const BlogTitleInput = styled.input`
 
 const CreateBlogTitle = styled.p`
     align-self: center;
+`
+
+const CreateButton = styled.button`
+    background: rgb(71, 79, 179);
+    color: white;
+    border: 0px;
+    width: 30%;
+    line-height: 50px;
+    align-self: center;
+    border-radius: 6px;
+    margin: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    transition: 0.2s;
+    &:hover {
+        background: white;
+        color: rgb(71, 79, 179);
+    }
 `

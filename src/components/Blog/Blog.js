@@ -7,14 +7,11 @@ export default class Blog extends Component {
             <BlogContainer>
 
                 <TitleContainer>
-                    <Title>Blog Title</Title>
+                    <Title>{this.props.item.BlogTitle}</Title>
                 </TitleContainer>
                 <SnippetContainer>
-                    <SnippetText>Still Could death since do we hoped is in. Exquisite no my attention extensive. 
-                        The determine conveying moonlight age. Avoid for see marry sorry child. Sitting so totally 
-                        forbade hundred to. Still Could death since do we hoped is in. Exquisite no my attention extensive. 
-                        The determine conveying moonlight age. Avoid for see marry sorry child. Sitting so totally 
-                        forbade hundred to. 
+                    <SnippetText>
+                        {this.props.item.BlogContent}
                         <ReadMoreLink> Read more</ReadMoreLink>
                     </SnippetText>
                 </SnippetContainer>

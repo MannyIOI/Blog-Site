@@ -2,19 +2,52 @@ import React, { Component } from 'react'
 import Blog from '../../components/Blog/Blog'
 import styled from 'styled-components'
 
+import { getAllBlogsAPI, createBlogAPI } from "../../api/api"
+
 export default class HomeScreen extends Component {
-    onCreate = () => {
-        this.props.history.push({pathname: "/create"})
+    constructor(props){
+        super(props)
+        this.state = {
+            blogs: [],
+            blogsIsLoading: false,
+            createBlogLoading: false,
+            blogTitle: ""
+        }   
+        this.getAllBlogs()
+    }
+
+    getAllBlogs = async () => {
+        const res = await getAllBlogsAPI()
+        this.setState({ blogs: res })
+    }
+
+    handleChange = (event) => {
+        this.setState({blogTitle: event.target.value});
+    }
+
+    createBlog = async () => {
+        const data = {
+        	BlogTitle : this.state.blogTitle,
+        	BlogContent: ""
+        }
+
+        const res = await createBlogAPI(data)
+        this.getAllBlogs()
+    }
+
+    onBlogClicked = (id) => {
+        
     }
 
     render() {
-        const array = [{}, {}, {}]
+        // const array = [{}, {}, {}]
         return (
             <div>
                 <p>Home Screen</p>
-                <CreateBlogButton onClick={this.onCreate}>Create</CreateBlogButton>
+                <NewBlogInput value={this.state.value} onChange={this.handleChange} />
+                <CreateBlogButton onClick={this.createBlog}>Create</CreateBlogButton>
                 <HomeContainer>
-                    {array.map((item, key) =>  <Blog/> )}
+                    {this.state.blogs.map((item, key) =>  <Blog key={item.ID} item={item}/> )}
                 </HomeContainer>
             </div>
         )
@@ -43,4 +76,14 @@ const HomeContainer = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+`
+const NewBlogInput = styled.input`{
+    line-height: 45px;
+    width: 20%;
+    align-self: center;
+    font-size: 16px;
+    padding: 0px 0px 0px 20px;
+    border-radius: 6px;
+    border: 0px;
+    margin: 10px;
 `

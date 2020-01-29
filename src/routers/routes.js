@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "../screens/LoginScreen/LoginScreen";
 import Signup from "../screens/SignupScreen/SignupScreen";
 import Home from '../screens/HomeScreen/HomeScreen';
-import Create from '../screens/CreateScreen/CreateScreen';
-
+import Edit from '../screens/EditScreen/EditScreen';
+import Blog from '../screens/BlogScreen/BlogScreen'
 
 const Routes = () => {
     return (
@@ -15,7 +15,8 @@ const Routes = () => {
               <Route path="/login" component={Login} />
               <Route path="/signup" component={Signup} />
               <Route path="/home" component={Home} />
-              <Route path="/create" component={Create} />
+              <Route path="/edit/:blogID" component={Edit} />
+              <Route path="/blog/:blogID" component={Blog}/>
             </Switch>
       </Router>
     );
