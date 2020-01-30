@@ -35,6 +35,8 @@ export default class HomeScreen extends Component {
         	BlogContent: ""
         }
 
+        this.setState({blogTitle: ""})
+
         await createBlogAPI(data)
         this.getAllBlogs()
     }
@@ -47,16 +49,19 @@ export default class HomeScreen extends Component {
         // const array = [{}, {}, {}]
         return (
             <Container>
-                <HomeHeader/>
+                <HomeHeader>
+                    <h1>D&B</h1>
+                </HomeHeader>
                 {/* <Categro> */}
                 <HomeBodyContainer>
                     <CategoryContainer>
-                        <CategoryButton>category</CategoryButton>
-                        <CategoryButton>category</CategoryButton>
+                        <CategoryButton>Sports</CategoryButton>
+                        <CategoryButton>Food</CategoryButton>
+                        <CategoryButton>Travel</CategoryButton>
+                        <CategoryButton>Music</CategoryButton>
                     </CategoryContainer>
                     <BlogListContainer>
-                        <p>Home Screen</p>
-                        <NewBlogInput value={this.state.value} onChange={this.handleChange} />
+                        <NewBlogInput value={this.state.value} onChange={this.handleChange}/>
                         <CreateBlogButton onClick={this.createBlog}>Create</CreateBlogButton>
                         <HomeContainer>
                             {this.state.blogs.map((item, key) =>  <Blog key={item.ID} item={item} history = {this.props.history}/> )}
@@ -72,6 +77,7 @@ const Container = styled.div`
 
 `
 const HomeBodyContainer = styled.div`
+    background: white;
     display: flex;
 `
 
@@ -80,6 +86,7 @@ const BlogListContainer =styled.div`
 `
 
 const CategoryContainer = styled.div`
+    background: silver;
     display: flex;
     width: 15%;
     justify-content: center;
@@ -121,7 +128,7 @@ const CreateBlogButton = styled.button`
 `
 
 const HomeHeader = styled.div`
-    background: blue;
+    background: black;
     height: 150px;
 `
 
@@ -131,6 +138,7 @@ const HomeContainer = styled.div`
     flex-wrap: wrap;
 `
 const NewBlogInput = styled.input`{
+    background: silver;
     line-height: 45px;
     width: 20%;
     align-self: center;

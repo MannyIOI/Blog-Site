@@ -42,7 +42,9 @@ export default class BlogScreen extends Component {
             //     </BlogContainer>
             // </Container>
             <div>
-                <BlogHeader/>
+                <BlogHeader>
+                    <h1>D&B</h1>
+                </BlogHeader>
                 {/* <Button variant="primary" style={{"fontSize":"15px" }} onClick={this.onSignoutClicked}>Signout</Button> */}
                 <div style={{"margin":"30px 0px","width":"100%"}}>
                     <Row>
@@ -67,7 +69,7 @@ export default class BlogScreen extends Component {
                             </Row>
                             <Row>
                                 <p style = {{"color": "white","margin":"50px","fontSize":"17px"}}>
-                                    Blog Content {this.state.blog.BlogContent}
+                                    {this.state.blog.BlogContent}
                                 </p>
                             </Row>
                         </Col>
@@ -87,7 +89,7 @@ export default class BlogScreen extends Component {
 // `
 
 const BlogHeader = styled.div`
-    background: blue;
+    background: black;
     height: 150px;
 `
 

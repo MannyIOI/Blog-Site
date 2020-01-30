@@ -49,6 +49,10 @@ export default class EditScreen extends Component {
         // this.setState()
     }
 
+    onDone = () => {
+        this.props.history.push({pathname: "/blog/"+this.state.blog_ID})
+    }
+
 
     render() {        
         return (
@@ -60,7 +64,7 @@ export default class EditScreen extends Component {
 
                     <EditBlogContent rows = {30} value={this.state.blog.BlogContent} onChange={this.updateBlogContent}/>
 
-                    <CreateButton onClick={this.onCreate}>Done</CreateButton>
+                    <CreateButton onClick={this.onDone}>Done</CreateButton>
                 </CreateBlogContainer>
                 
 
