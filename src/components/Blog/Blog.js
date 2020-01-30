@@ -12,7 +12,7 @@ export default class Blog extends Component {
                 </TitleContainer>
                 <SnippetContainer>
                     <SnippetText>
-                        {this.props.item.BlogContent}
+                        {this.props.item.BlogContent.slice(0, 750)}
                         <ReadMoreLink> Read more</ReadMoreLink>
                     </SnippetText>
                 </SnippetContainer>

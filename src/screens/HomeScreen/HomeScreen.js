@@ -19,8 +19,10 @@ export default class HomeScreen extends Component {
 
     getAllBlogs = async () => {
         // getAvailableServer()
-        const res = await getAllBlogsAPI()
-        this.setState({ blogs: res })
+        await getAllBlogsAPI().then(res => {
+            this.setState({ blogs: res })
+        })
+        
     }
 
     handleChange = (event) => {
