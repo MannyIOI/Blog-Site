@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import './index.module.css'
-import styled from 'styled-components'
+// import styled from 'styled-components'
 import { Card,Form, Button, Row, Col} from "react-bootstrap";
 
 export default class SignupScreen extends Component {
@@ -27,7 +27,7 @@ export default class SignupScreen extends Component {
             //         <SignupButton >Submit</SignupButton>
             //     </SignUpContainer>
             // </Container>
-            <div style={{"display":"flex","alignItems": "center","minHeight":"100%","minHeight":"100vh","Width":"100%","justifyContent": "center"}}>
+            <div style={{"display":"flex","alignItems": "center","minHeight":"100vh","Width":"100%","justifyContent": "center"}}>
             
                 <Row style={{"backgroundColor":"grey", "height":"500px"}}>
                     <Col sm={8} style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
@@ -67,54 +67,54 @@ export default class SignupScreen extends Component {
     }
 }
 
-const Container = styled.div `
-    display: flex;
-    align-items: center;
-    flex: 1;
-    justify-content: center;
-`
+// const Container = styled.div `
+//     display: flex;
+//     align-items: center;
+//     flex: 1;
+//     justify-content: center;
+// `
 
-const SignUpContainer = styled.div `
-    background: gray;
-    border-radius: 20px;
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-`
+// const SignUpContainer = styled.div `
+//     background: gray;
+//     border-radius: 20px;
+//     width: 30%;
+//     display: flex;
+//     flex-direction: column;
+//     padding: 10px;
+// `
 
-const SignupInput = styled.input`{
-    line-height: 45px;
-    width: 50%;
-    align-self: center;
-    font-size: 16px;
-    padding: 0px 0px 0px 20px;
-    border-radius: 6px;
-    border: 0px;
-    margin: 10px;
-`
+// const SignupInput = styled.input`{
+//     line-height: 45px;
+//     width: 50%;
+//     align-self: center;
+//     font-size: 16px;
+//     padding: 0px 0px 0px 20px;
+//     border-radius: 6px;
+//     border: 0px;
+//     margin: 10px;
+// `
 
-const SignupButton = styled.button`
-    background: rgb(71, 79, 179);
-    color: white;
-    border: 0px;
-    width: 30%;
-    line-height: 50px;
-    align-self: center;
-    border-radius: 6px;
-    margin: 10px;
-    font-size: 20px;
-    font-weight: bold;
-    transition: 0.2s;
-    &:hover {
-        background: white;
-        color: rgb(71, 79, 179);
-    }
-`
+// const SignupButton = styled.button`
+//     background: rgb(71, 79, 179);
+//     color: white;
+//     border: 0px;
+//     width: 30%;
+//     line-height: 50px;
+//     align-self: center;
+//     border-radius: 6px;
+//     margin: 10px;
+//     font-size: 20px;
+//     font-weight: bold;
+//     transition: 0.2s;
+//     &:hover {
+//         background: white;
+//         color: rgb(71, 79, 179);
+//     }
+// `
 
-const SignupText = styled.h1`
-    color: white;
-    font-size: 40px;
-    margin: 30px;
-    font-weight: bold;
-`
+// const SignupText = styled.h1`
+//     color: white;
+//     font-size: 40px;
+//     margin: 30px;
+//     font-weight: bold;
+// `

@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import './index.css'
 
 import { getBlogAPI } from '../../api/api'
-import { Button, Row, Col, Navbar, ButtonToolbar, Image} from "react-bootstrap";
+import { Button, Row, Col, ButtonToolbar, Image} from "react-bootstrap";
 import pic from "./porfo.jpg"
 
 export default class BlogScreen extends Component {
@@ -14,7 +14,7 @@ export default class BlogScreen extends Component {
             blog: {},
             blogId: this.props.match.params.blogID,
         }
-        const { blogID } = 
+        // getAvailableServer() 
         this.getBlog()
     }
 
@@ -81,33 +81,33 @@ export default class BlogScreen extends Component {
     }
 }
 
-const Containerr = styled.div`
-    display: flex;
-    flex-direction: column;
-`
+// const Containerr = styled.div`
+//     display: flex;
+//     flex-direction: column;
+// `
 
 const BlogHeader = styled.div`
     background: blue;
     height: 150px;
 `
 
-const BlogContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-`
+// const BlogContainer = styled.div`
+//     display: flex;
+//     flex-direction: column;
+//     flex: 1;
+// `
 
-const BlogTitle = styled.h4`
-    width: 60%;
-    align-self: center;
-    line-height: 20px;
-    font-size: 25px;
-    padding: 30px;
-    font-weight: bold;
-    font-style: italic;
-`
+// const BlogTitle = styled.h4`
+//     width: 60%;
+//     align-self: center;
+//     line-height: 20px;
+//     font-size: 25px;
+//     padding: 30px;
+//     font-weight: bold;
+//     font-style: italic;
+// `
 
-const BlogContent = styled.p`
-    align-self: center;
-    color: white;
-`
+// const BlogContent = styled.p`
+//     align-self: center;
+//     color: white;
+// `

@@ -8,15 +8,17 @@ export default class HomeScreen extends Component {
     constructor(props){
         super(props)
         this.state = {
-            blogs: [{BlogTitle: "Title", BlogContent: "Content", ID: 1},{},{},{},{},{},{}],
+            blogs: [],
             blogsIsLoading: false,
             createBlogLoading: false,
             blogTitle: ""
         }   
+        
         this.getAllBlogs()
     }
 
     getAllBlogs = async () => {
+        // getAvailableServer()
         const res = await getAllBlogsAPI()
         this.setState({ blogs: res })
     }
@@ -31,7 +33,7 @@ export default class HomeScreen extends Component {
         	BlogContent: ""
         }
 
-        const res = await createBlogAPI(data)
+        await createBlogAPI(data)
         this.getAllBlogs()
     }
 

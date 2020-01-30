@@ -12,12 +12,13 @@ export default class EditScreen extends Component {
             blog: {},
             blog_ID: parseInt(this.props.match.params.blogID)
         }
-        
+        // getAvailableServer()
         this.getBlog()
         this.listen()
     }
 
     getBlog = async() => {
+        
         const res = await getBlogAPI(this.state.blog_ID)
         this.setState({blog: res})
     }
