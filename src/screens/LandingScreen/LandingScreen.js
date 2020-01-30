@@ -27,7 +27,7 @@ export default class Start extends Component{
                         </Col>
                         <Col lg={4} style={{"float":"right"}}>
                             <p style={{"fontSize":"3.5rem","fontWeight":"bold"}}>
-                            WE TRAVLE NOT TO ESCAPE LIFE,BUT FOR LIFE NOT TO ESCAPE US!!!
+                                WE TRAVEL NOT TO ESCAPE LIFE,BUT FOR LIFE NOT TO ESCAPE US!!!
                             </p>
                         </Col>
                         </div>
